@@ -155,4 +155,4 @@ For your convenience, here's a table of Minitest Matchers to use in the **Assert
 
 ## Conclusion
 
-Feel free to keep going on this exercise, but only the first two test cases of Red-Green-Refactor!
+Feel free to keep going on this exercise, but only the first two test cases need to follow the Red-Green-Refactor pattern
