@@ -39,6 +39,23 @@ Based on your understanding of all of the requirements for `blackjack_score(hand
 - An expected value/outcome for the method `blackjack_score(hand)` to produce
 - Which requirement the test case is validating
 
+- Must raise an `ArgumentError` if the hand is a bust (what does a "bust" mean in this scenario?)
+for hand = [10, Jack, 5], 
+  blackjack_score(hand) = 25 = bust
+  raise ArgumentError
+
+- Must raise an `ArgumentError` if the hand contains non-cards (what does a "non-card" mean in this scenario?)
+  for hand = [11, Banana, 2]
+  blackjack_score(hand) = error
+  raise ArgumentError
+
+- Must raise an `ArgumentError` if the hand contains more than five cards
+  for hand = [1, 2, 3, 4, 5, 6]
+  blackjack_score(hand) = error
+  raise ArgumentError
+
+
+
 ### Compare your Test Cases To Ours
 
 Open up the file `test/blackjack_score_test.rb` and read through our test names (or the names of tests inbetween `it` and `do`).
@@ -54,7 +71,16 @@ What test cases are **missing** from our test suite?
 Looking at our test suite and our test case names, answer:
 
 1. Which test cases seem to test the obvious core functionality of the method, and are **nominal test cases**?
+- can calculate the score for a pair of number cards
+- facecards have values calculated correctly
+- raises an ArgumentError for scores over 21
+- calculates aces as 11 where it does not go over 21
+- calculates aces as 1, if an 11 would cause the score to go over 21
+
+
 2. Which test cases seem to test the non-obvious requirements of the method, and are **edge test cases**?
+- raises an ArgumentError for invalid cards
+- raises an ArgumentError for hands larger than 5
 
 <details>
   
@@ -87,7 +113,7 @@ Let's aim to finish two test cases of this method.
 Look at the test `"can calculate the score for a pair of number cards"` in `test/blackjack_score_test.rb`.
 
 Reading the pre-existing code, first identify:
-- What is the value for `hand` (Arange)
+- What is the value for `hand` (Arrange)
 - What is the expected value/outcome for the method `blackjack_score(hand)` to produce (Assert)
 - Which requirement the test case is validating
 
@@ -115,7 +141,7 @@ Look at the test `"facecards have values calculated correctly"` in `test/blackja
 
 First, identify:
 - Which requirement the test case is validating
-- What is a specific value for `hand` that you can pick for this test case (Arange)
+- What is a specific value for `hand` that you can pick for this test case (Arrange)
 - What is the expected value/outcome for the method `blackjack_score(hand)` to produce (Assert)
 
 Are you having trouble coming up with a specific value for `hand`? That's because there are a lot of things that `hand` could be! **If this test case name is too vague, consider:**
